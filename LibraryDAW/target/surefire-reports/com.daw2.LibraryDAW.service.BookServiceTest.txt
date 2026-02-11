@@ -1,0 +1,34 @@
+-------------------------------------------------------------------------------
+Test set: com.daw2.LibraryDAW.service.BookServiceTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.889 s <<< FAILURE! -- in com.daw2.LibraryDAW.service.BookServiceTest
+com.daw2.LibraryDAW.service.BookServiceTest.createBook_ShouldCheckForDuplicateBeforeSaving -- Time elapsed: 0.797 s <<< FAILURE!
+Wanted but not invoked:
+bookRepository.findByTitleAndAuthor(
+    "Rayuela",
+    "Cortázar"
+);
+-> at com.daw2.LibraryDAW.service.BookServiceTest.createBook_ShouldCheckForDuplicateBeforeSaving(BookServiceTest.java:100)
+
+However, there was exactly 1 interaction with this mock:
+bookRepository.save(
+    com.daw2.LibraryDAW.model.Book@3e3578e9
+);
+-> at com.daw2.LibraryDAW.service.BookService.createBook(BookService.java:29)
+
+
+	at com.daw2.LibraryDAW.service.BookServiceTest.createBook_ShouldCheckForDuplicateBeforeSaving(BookServiceTest.java:100)
+
+com.daw2.LibraryDAW.service.BookServiceTest.createBook_WhenBookAlreadyExists_ShouldReturnNull -- Time elapsed: 0.011 s <<< FAILURE!
+org.mockito.exceptions.verification.NeverWantedButInvoked: 
+
+bookRepository.save(
+    com.daw2.LibraryDAW.model.Book@6ec05499
+);
+Never wanted here:
+-> at com.daw2.LibraryDAW.service.BookServiceTest.createBook_WhenBookAlreadyExists_ShouldReturnNull(BookServiceTest.java:80)
+But invoked here:
+-> at com.daw2.LibraryDAW.service.BookService.createBook(BookService.java:29) with arguments: [com.daw2.LibraryDAW.model.Book@6ec05499]
+
+	at com.daw2.LibraryDAW.service.BookServiceTest.createBook_WhenBookAlreadyExists_ShouldReturnNull(BookServiceTest.java:80)
+
